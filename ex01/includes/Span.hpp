@@ -24,8 +24,8 @@ class   Span
 		long    shortestSpan();
 		long    longestSpan();
 
-		long	isMax();
-		long	isMin();
+		// long	isMax();
+		// long	isMin();
 }
 
 #endif

@@ -46,7 +46,7 @@ long	Span::shortestSpan()
 		int	v1 = this->_vec[j];
 		for (int i = j; i + 1 < this->_vec.size(); i++)
 		{
-			v2 = this->_vec[i+1];
+			int	v2 = this->_vec[i+1];
 			if (v1 >= v2)
 				int	diff = v1 - v2;
 			else
@@ -55,48 +55,87 @@ long	Span::shortestSpan()
 	}
 }
 
-long	Span::isMax()
-{
-	for	(int j = 0; j < this->_vec.size(); j++)
-	{
-		int	v1 = this->_vec[j];
-		for (int i = j; i + 1 < this->_vec.size(); i++)
-		{
-			v2 = this->_vec[i+1];
-			if (v1 > v2)
-			{
-				int	temp = v1;
-				v2 = v1;
-				v1 = temp;
-			}
-		}
-	}
-	return (v2);
-}
+// long	Span::isMax()
+// {
+// 	for	(int j = 0; j < this->_vec.size(); j++)
+// 	{
+// 		int	v1 = this->_vec[j];
+// 		for (int i = j; i + 1 < this->_vec.size(); i++)
+// 		{
+// 			int	v2 = this->_vec[i+1];
+// 			if (v1 > v2)
+// 			{
+// 				int	temp = v1;
+// 				v2 = v1;
+// 				v1 = temp;
+// 			}
+// 		}
+// 	}
+// 	return (v2);
+// }
 
-long	Span::isMin()
-{
-	for	(int j = 0; j < this->_vec.size(); j++)
-	{
-		int	v1 = this->_vec[j];
-		for (int i = j; i + 1 < this->_vec.size(); i++)
-		{
-			v2 = this->_vec[i+1];
-			if (v1 < v2)
-			{
-				int	temp = v1;
-				v2 = v1;
-				v1 = temp;
-			}
-		}
-	}
-	return (v2);
-}
+// long	Span::isMin()
+// {
+// 	for	(int j = 0; j < this->_vec.size(); j++)
+// 	{
+// 		int	v1 = this->_vec[j];
+// 		for (int i = j; i + 1 < this->_vec.size(); i++)
+// 		{
+// 			int	v2 = this->_vec[i+1];
+// 			if (v1 < v2)
+// 			{
+// 				int	temp = v1;
+// 				v2 = v1;
+// 				v1 = temp;
+// 			}
+// 		}
+// 	}
+// 	return (v2);
+// }
 
 long	Span::longestSpan()
 {
-	int	min = isMin();
-	int	max = isMax();
+	if (this->_vec.size =< 1)
+	{
+		std::cout << "1 vec" << std::endl;
+		return (0);
+	}
 
+	int	max = this->_vec[0];
+	int	min = this->_vec[0];
+
+	for (int i = 0; i < this->_vec.size(); i++)
+	{
+		if (max < this->_vec[i])
+			max = this->_vec[i];
+		if (min > this->_vec[i])
+			min = this->_vec[i];
+	}
 	return (max - min);
+}
+
+long	Span::shortestSpan()
+{
+	if (this->_vec.size =< 1)
+	{
+		std::cout << "1 vec" << std::endl;
+		return (0);
+	}
+
+	int	min = this->_vec[0] - this->_vec[1];
+	if (min < 0)
+		min *= -1;
+
+	for (int j = 0; j < this->_vec.size(); j++)
+	{
+		for (int i = j; i < this->_vec.size(); i++)
+		{
+			int	dif = this->_vec[i] - this->_vec[i+1];
+			if (dif < 0)
+				dif *= -1;
+			if (min > dif)
+				min = dif;
+		}
+	}
+	return (min);
 }
