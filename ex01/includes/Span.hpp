@@ -23,9 +23,6 @@ class   Span
 		void    addNumber(int N);
 		long    shortestSpan();
 		long    longestSpan();
-
-		// long	isMax();
-		// long	isMin();
 }
 
 #endif

@@ -55,51 +55,10 @@ long	Span::shortestSpan()
 	}
 }
 
-// long	Span::isMax()
-// {
-// 	for	(int j = 0; j < this->_vec.size(); j++)
-// 	{
-// 		int	v1 = this->_vec[j];
-// 		for (int i = j; i + 1 < this->_vec.size(); i++)
-// 		{
-// 			int	v2 = this->_vec[i+1];
-// 			if (v1 > v2)
-// 			{
-// 				int	temp = v1;
-// 				v2 = v1;
-// 				v1 = temp;
-// 			}
-// 		}
-// 	}
-// 	return (v2);
-// }
-
-// long	Span::isMin()
-// {
-// 	for	(int j = 0; j < this->_vec.size(); j++)
-// 	{
-// 		int	v1 = this->_vec[j];
-// 		for (int i = j; i + 1 < this->_vec.size(); i++)
-// 		{
-// 			int	v2 = this->_vec[i+1];
-// 			if (v1 < v2)
-// 			{
-// 				int	temp = v1;
-// 				v2 = v1;
-// 				v1 = temp;
-// 			}
-// 		}
-// 	}
-// 	return (v2);
-// }
-
 long	Span::longestSpan()
 {
-	if (this->_vec.size =< 1)
-	{
-		std::cout << "1 vec" << std::endl;
-		return (0);
-	}
+	if (this->_vec.size <= 1)
+		throw	std::exception();
 
 	int	max = this->_vec[0];
 	int	min = this->_vec[0];
@@ -116,11 +75,8 @@ long	Span::longestSpan()
 
 long	Span::shortestSpan()
 {
-	if (this->_vec.size =< 1)
-	{
-		std::cout << "1 vec" << std::endl;
-		return (0);
-	}
+	if (this->_vec.size <= 1)
+		throw	std::exception();
 
 	int	min = this->_vec[0] - this->_vec[1];
 	if (min < 0)
