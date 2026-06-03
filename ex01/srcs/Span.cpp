@@ -33,7 +33,7 @@ Span& Span::operator=(const Span& other)
 
 void	Span::addNumber(int N)
 {
-	if (this->_vec.size() >= this->_sizeMax;
+	if (this->_vec.size() >= this->_sizeMax)
 		throw	std::exception();
 	else
 		this->_vec.push_back(N);
@@ -41,29 +41,36 @@ void	Span::addNumber(int N)
 
 long	Span::shortestSpan()
 {
-	for	(int j = 0; j < this->_vec.size(); j++)
+	if (this->_vec.size() <= 1)
+		throw	std::exception();
+
+	long	min = static_cast<long>(this->_vec[0]) - static_cast<long>(this->_vec[1]);
+	if (min < 0)
+		min *= -1;
+
+	for (size_t j = 0; j < this->_vec.size(); j++)
 	{
-		int	v1 = this->_vec[j];
-		for (int i = j; i + 1 < this->_vec.size(); i++)
+		for (size_t i = j + 1; i < this->_vec.size(); i++)
 		{
-			int	v2 = this->_vec[i+1];
-			if (v1 >= v2)
-				int	diff = v1 - v2;
-			else
-				int diff = v2 - v1;
+			long	diff = static_cast<long>(this->_vec[j]) - static_cast<long>(this->_vec[i]);
+			if (diff < 0)
+				diff *= -1;
+			if (diff < min)
+				min = diff;
 		}
 	}
+	return (min);
 }
 
 long	Span::longestSpan()
 {
-	if (this->_vec.size <= 1)
+	if (this->_vec.size() <= 1)
 		throw	std::exception();
 
-	int	max = this->_vec[0];
-	int	min = this->_vec[0];
+	long	max = this->_vec[0];
+	long	min = this->_vec[0];
 
-	for (int i = 0; i < this->_vec.size(); i++)
+	for (size_t i = 0; i < this->_vec.size(); i++)
 	{
 		if (max < this->_vec[i])
 			max = this->_vec[i];
@@ -71,27 +78,4 @@ long	Span::longestSpan()
 			min = this->_vec[i];
 	}
 	return (max - min);
-}
-
-long	Span::shortestSpan()
-{
-	if (this->_vec.size <= 1)
-		throw	std::exception();
-
-	int	min = this->_vec[0] - this->_vec[1];
-	if (min < 0)
-		min *= -1;
-
-	for (int j = 0; j < this->_vec.size(); j++)
-	{
-		for (int i = j; i < this->_vec.size(); i++)
-		{
-			int	dif = this->_vec[i] - this->_vec[i+1];
-			if (dif < 0)
-				dif *= -1;
-			if (min > dif)
-				min = dif;
-		}
-	}
-	return (min);
 }
