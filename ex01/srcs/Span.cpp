@@ -41,37 +41,62 @@ void	Span::addNumber(int N)
 
 long	Span::shortestSpan()
 {
-	int	dif1;
-
-	if (this->_vec.size() > 1)
-		dif1 = diff = this->_vec[i] - this->_vec[j];
-	if (dif1 < 0)
-		dif1 *= 1;
-	for (int i = 0; i < this->_vec.size(); i++)
+	for	(int j = 0; j < this->_vec.size(); j++)
 	{
-		int	j = i + 1;
-		while (j < this->_vec.size())
+		int	v1 = this->_vec[j];
+		for (int i = j; i + 1 < this->_vec.size(); i++)
 		{
-			dif2 = this->_vec[i] - this->_vec[j];
-			if (dif2 < 0)
-				dif2 *= -1;
-			if (dif2 != dif1)
-			{
-				if (dif1 > dif2)
-				{
-					int	temp = dif1;
-					dif1 = dif2;
-					dif2 = temp;
-				}
-			}
-			j++;
+			v2 = this->_vec[i+1];
+			if (v1 >= v2)
+				int	diff = v1 - v2;
+			else
+				int diff = v2 - v1;
 		}
-
-
 	}
+}
+
+long	Span::isMax()
+{
+	for	(int j = 0; j < this->_vec.size(); j++)
+	{
+		int	v1 = this->_vec[j];
+		for (int i = j; i + 1 < this->_vec.size(); i++)
+		{
+			v2 = this->_vec[i+1];
+			if (v1 > v2)
+			{
+				int	temp = v1;
+				v2 = v1;
+				v1 = temp;
+			}
+		}
+	}
+	return (v2);
+}
+
+long	Span::isMin()
+{
+	for	(int j = 0; j < this->_vec.size(); j++)
+	{
+		int	v1 = this->_vec[j];
+		for (int i = j; i + 1 < this->_vec.size(); i++)
+		{
+			v2 = this->_vec[i+1];
+			if (v1 < v2)
+			{
+				int	temp = v1;
+				v2 = v1;
+				v1 = temp;
+			}
+		}
+	}
+	return (v2);
 }
 
 long	Span::longestSpan()
 {
+	int	min = isMin();
+	int	max = isMax();
 
+	return (max - min);
 }
