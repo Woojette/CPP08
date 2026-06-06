@@ -1,9 +1,10 @@
-NAME = easyfind
+NAME = Span
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -Iincludes
 
-SRCS =	srcs/main.cpp
+SRCS =	srcs/main.cpp \
+				srcs/Span.cpp
 
 OBJDIR = objs
 OBJS = $(patsubst srcs/%.cpp,$(OBJDIR)/%.o,$(SRCS))

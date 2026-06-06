@@ -23,6 +23,10 @@ class   Span
 		void    addNumber(int N);
 		long    shortestSpan();
 		long    longestSpan();
+
+		void	addRange(iterator begin, iterator end);
 }
+
+#include "Span.tpp"
 
 #endif

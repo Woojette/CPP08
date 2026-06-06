@@ -2,6 +2,7 @@
 
 int main(void)
 {
+	std::cout << "Test with 5 numbers:" << std::endl;
 	Span sp = Span(5);
 	sp.addNumber(6);
 	sp.addNumber(3);
@@ -10,5 +11,17 @@ int main(void)
 	sp.addNumber(11);
 	std::cout << sp.shortestSpan() << std::endl;
 	std::cout << sp.longestSpan() << std::endl;
-	return 0;
+
+	std::cout << std::endl << "Test  using a range of iterators:" << std::endl;
+	Span sp2 = Span(5);
+	std::vector<int> vec;
+	vec.push_back(6);
+	vec.push_back(3);
+	vec.push_back(17);
+	vec.push_back(9);
+	vec.push_back(11);
+	sp2.addRange(vec.begin(), vec.end());
+	std::cout << sp2.shortestSpan() << std::endl;
+	std::cout << sp2.longestSpan() << std::endl;
+	return (0);
 }
