@@ -5,6 +5,8 @@
 # include <string>
 # include <exception>
 # include <stack>
+# include <iterator>
+# include <list>
 
 template <typename T>
 class MutantStack : public std::stack<T>
