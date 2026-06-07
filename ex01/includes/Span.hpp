@@ -25,7 +25,7 @@ class   Span
 		long    longestSpan();
 
 		void	addRange(iterator begin, iterator end);
-}
+};
 
 #include "Span.tpp"
 
