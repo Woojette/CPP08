@@ -24,6 +24,7 @@ class   Span
 		long    shortestSpan();
 		long    longestSpan();
 
+		template	<typename iterator>
 		void	addRange(iterator begin, iterator end);
 };
 

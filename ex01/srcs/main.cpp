@@ -12,7 +12,7 @@ int main(void)
 	std::cout << sp.shortestSpan() << std::endl;
 	std::cout << sp.longestSpan() << std::endl;
 
-	std::cout << std::endl << "Test  using a range of iterators:" << std::endl;
+	std::cout << std::endl << "Test using a range of iterators:" << std::endl;
 	Span sp2 = Span(5);
 	std::vector<int> vec;
 	vec.push_back(6);
@@ -23,5 +23,13 @@ int main(void)
 	sp2.addRange(vec.begin(), vec.end());
 	std::cout << sp2.shortestSpan() << std::endl;
 	std::cout << sp2.longestSpan() << std::endl;
+
+	std::cout << std::endl << "Test using 10,000 numbers:" << std::endl;
+	Span	sp3 = Span(10000);
+	for (int i = 0; i < 10000; i++)
+		sp3.addNumber(i);
+	std::cout << sp3.shortestSpan() << std::endl;
+	std::cout << sp3.longestSpan() << std::endl;
+
 	return (0);
 }

@@ -6,7 +6,7 @@ int main(void)
   MutantStack<int> mstack;
   mstack.push(5);
   mstack.push(17);
-  std::cout << "Top element: " << mstack.top() << std::endl;
+  std::cout << "Top element: " << mstack.top() << " (Size: " << mstack.size() << ")" << std::endl;
   std::cout << "popping element..." << std::endl;
   mstack.pop();
   std::cout << "Size: " << mstack.size() << std::endl;
@@ -30,7 +30,7 @@ int main(void)
   std::list<int> lst;
   lst.push_back(5);
   lst.push_back(17);
-  std::cout << "Back element: " << lst.back() << std::endl;
+  std::cout << "Back element: " << lst.back() << " (Size: " << lst.size() << ")" << std::endl;
   std::cout << "popping element..." << std::endl;
   lst.pop_back();
   std::cout << "Size: " << lst.size() << std::endl;
